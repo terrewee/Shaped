@@ -13,10 +13,14 @@ namespace Centipede {
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            screen = new Point(470, 550);
+            screen = new Point(800, 600);
             ApplyResolutionSettings();
 
             // TODO: use this.Content to load your game content here
+            gameStateManager.AddGameState("Title", new GameStates.TitleState());
+            gameStateManager.AddGameState("Playing", new GameStates.PlayingState());
+            gameStateManager.AddGameState("GameOver", new GameStates.GameOverState());
+            gameStateManager.SwitchTo("Title");
         }
 
     }

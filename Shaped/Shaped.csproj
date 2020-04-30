@@ -41,6 +41,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameStates\GameOverState.cs" />
+    <Compile Include="GameStates\TitleState.cs" />
+    <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Shaped.cs" />
     <Compile Include="GameManagement\AnimatedGameObject.cs" />
     <Compile Include="GameManagement\Animation.cs" />
@@ -78,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameObjects\" />
-    <Folder Include="GameStates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
