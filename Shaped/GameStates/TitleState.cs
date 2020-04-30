@@ -4,10 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Centipede.GameStates {
     class TitleState : IGameLoopObject {
 
-        GameObjectList objectList = new GameObjectList(0, "background");
+        GameObjectList objectList = new GameObjectList();
 
         public TitleState() : base() {
-            objectList.Add(new SpriteGameObject("spr_titleBackground"));
+            objectList.Add(new SpriteGameObject("spr_titleBackground", 0));
+            SpriteGameObject title = new SpriteGameObject("spr_title", 1);
+            title.Position = new Vector2(GameEnvironment.Screen.X / 2 - title.Sprite.Width / 2, GameEnvironment.Screen.Y / 3 - title.Sprite.Height / 2);
+            objectList.Add(title);
         }
 
         public void HandleInput(InputHelper inputHelper) {
