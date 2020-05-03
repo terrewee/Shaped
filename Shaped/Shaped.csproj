@@ -73,11 +73,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\title\spr_arrow%403x2.png" />
+    <Content Include="Content\title\spr_title.png" />
+    <Content Include="Content\title\spr_titleBackground.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="Content\fonts\Arial12.spritefont" />
+    <None Include="Content\fonts\Arial40.spritefont" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameObjects\" />

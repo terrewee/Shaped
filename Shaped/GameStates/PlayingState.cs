@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Centipede.GameStates {
+namespace Shaped.GameStates {
     class PlayingState : IGameLoopObject {
 
         public PlayingState() : base() {

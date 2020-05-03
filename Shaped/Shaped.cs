@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Centipede {
+namespace Shaped {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
