@@ -61,7 +61,6 @@ namespace Shaped.GameStates {
                     playBig = false;
 
             }
-            System.Console.WriteLine(play.Sprite.SheetIndex);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {

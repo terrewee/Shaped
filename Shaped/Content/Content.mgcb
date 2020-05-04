@@ -27,6 +27,18 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/Arial40.spritefont
 
+#begin playing/spr_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:playing/spr_tile.png
+
 #begin title/spr_arrow@3x2.png
 /importer:TextureImporter
 /processor:TextureProcessor
