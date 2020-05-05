@@ -16,6 +16,14 @@ namespace Shaped.GameObjects {
 
         public override void Update(GameTime gameTime) {
             base.Update(gameTime);
+            if (position.X < 50)
+                position.X += speed;
+            if (position.X + sprite.Width > GameEnvironment.Screen.X - 50)
+                position.X -= speed;
+            if (position.Y < 250)
+                position.Y += speed;
+            if (position.Y + sprite.Height > GameEnvironment.Screen.Y - 50)
+                position.Y -= speed;
         }
 
         public override void HandleInput(InputHelper inputHelper) {

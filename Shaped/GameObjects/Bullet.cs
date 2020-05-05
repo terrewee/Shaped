@@ -5,9 +5,10 @@ namespace Shaped.GameObjects {
     class Bullet : SpriteGameObject {
 
         private int speed = 2;
+        public int damage;
 
-        public Bullet(int layer = 0, string id = "", int sheetIndex = 0) : base("playing/spr_bullet", layer, id, sheetIndex) {
-
+        public Bullet(int damage, int layer = 0, string id = "", int sheetIndex = 0) : base("playing/spr_bullet", layer, id, sheetIndex) {
+            this.damage = damage;
         }
 
         public override void Update(GameTime gameTime) {
