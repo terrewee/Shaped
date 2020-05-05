@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using Shaped.GameObjects;
 using System.Collections.Generic;
 
 namespace Shaped.GameStates {
@@ -9,6 +9,8 @@ namespace Shaped.GameStates {
         private GameObjectList objectList = new GameObjectList();
 
         List<List<Point>> grid;
+
+        Player player = new Player(3);
 
         public PlayingState() : base() {
             objectList.Add(new SpriteGameObject("title/spr_titleBackground", 0));
@@ -20,14 +22,13 @@ namespace Shaped.GameStates {
                     SpriteGameObject sprite = new SpriteGameObject("playing/spr_tile", 1);
                     sprite.Position = new Vector2(grid[i][j].X, grid[i][j].Y);
                     objectList.Add(sprite);
-                    Console.WriteLine(i + ", " + j);
                 }
             }
 
         }
 
         public void HandleInput(InputHelper inputHelper) {
-
+            player.HandleInput(inputHelper);
         }
 
         public void Update(GameTime gameTime) {
@@ -35,6 +36,7 @@ namespace Shaped.GameStates {
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             objectList.Draw(gameTime, spriteBatch);
+            player.Draw(gameTime, spriteBatch);
         }
 
         public void Reset() {
