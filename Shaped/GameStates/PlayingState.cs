@@ -1,14 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shaped.GameObjects;
+using System;
 using System.Collections.Generic;
 
 namespace Shaped.GameStates {
     class PlayingState : IGameLoopObject {
 
         private GameObjectList objectList = new GameObjectList();
-
+        private GameObjectList enemies = new GameObjectList();
         List<List<Point>> grid;
+
+        Random random = new Random();
+        int spawnSize = 200;
 
         Player player = new Player(3);
 
@@ -24,7 +28,6 @@ namespace Shaped.GameStates {
                     objectList.Add(sprite);
                 }
             }
-
         }
 
         public void HandleInput(InputHelper inputHelper) {
@@ -32,10 +35,26 @@ namespace Shaped.GameStates {
         }
 
         public void Update(GameTime gameTime) {
+            if (random.Next(0, spawnSize) == 0) {
+                Enemy enemy = new Enemy(random.Next(1, 51 - spawnSize / 4), 5);
+                enemy.Position = new Vector2(GameEnvironment.Screen.X, grid[random.Next(0, 4)][0].Y);
+                enemies.Add(enemy);
+                if (spawnSize != 1)
+                    spawnSize--;
+            }
+            if (enemies.Children.Count != 0) {
+                for (int i = enemies.Children.Count - 1; i >= 0; i--) {
+
+                    if (enemies.Children[i].Position.X < 0)
+                        enemies.Children.Remove(enemies.Children[i]);
+                }
+            }
+            enemies.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             objectList.Draw(gameTime, spriteBatch);
+            enemies.Draw(gameTime, spriteBatch);
             player.Draw(gameTime, spriteBatch);
         }
 
