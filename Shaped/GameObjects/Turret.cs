@@ -22,7 +22,7 @@ namespace Shaped.GameObjects {
                 if (timer == 60) {
                     timer = 0;
                     Bullet bullet = new Bullet();
-                    bullet.Poition = new Vector2(Position.X + sprite.Width, position.Y);
+                    bullet.Position = new Vector2(Position.X + sprite.Width, position.Y);
                     bullets.Add(bullet);
                 }
 

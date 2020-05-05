@@ -9,6 +9,7 @@ namespace Shaped.GameStates {
 
         private GameObjectList objectList = new GameObjectList();
         private GameObjectList enemies = new GameObjectList();
+        private GameObjectList bullets = new GameObjectList();
         List<List<Point>> grid;
 
         Random random = new Random();
@@ -35,6 +36,7 @@ namespace Shaped.GameStates {
         }
 
         public void Update(GameTime gameTime) {
+            // spawn zombies
             if (random.Next(0, spawnSize) == 0) {
                 Enemy enemy = new Enemy(random.Next(1, 51 - spawnSize / 4), 5);
                 enemy.Position = new Vector2(GameEnvironment.Screen.X, grid[random.Next(0, 4)][0].Y);
@@ -42,6 +44,7 @@ namespace Shaped.GameStates {
                 if (spawnSize != 1)
                     spawnSize--;
             }
+            // zombies hit the end
             if (enemies.Children.Count != 0) {
                 for (int i = enemies.Children.Count - 1; i >= 0; i--) {
 
@@ -50,6 +53,16 @@ namespace Shaped.GameStates {
                 }
             }
             enemies.Update(gameTime);
+
+            //bullets
+            foreach (Bullet bullet in bullets.Children) {
+                foreach (Enemy enemy in enemies.Children) {
+                    if (Math.Abs(bullet.Position.X - enemy.Position.X) < 50) {
+                        bullets.Remove(bullet);
+                        enemies.Remove(enemy);
+                    }
+                }
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {

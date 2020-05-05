@@ -56,7 +56,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\Bullet.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
+    <Compile Include="GameObjects\Turret.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameStates\GameOverState.cs" />
     <Compile Include="GameStates\TitleState.cs" />
