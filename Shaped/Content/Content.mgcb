@@ -27,6 +27,18 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/Arial40.spritefont
 
+#begin playing/spr_bullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:playing/spr_bullet.png
+
 #begin playing/spr_enemy@5x4.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -62,6 +74,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:playing/spr_tile.png
+
+#begin playing/spr_turret.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:playing/spr_turret.png
 
 #begin title/spr_arrow@3x2.png
 /importer:TextureImporter
