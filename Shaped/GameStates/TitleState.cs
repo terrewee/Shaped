@@ -32,6 +32,7 @@ namespace Shaped.GameStates {
         public void HandleInput(InputHelper inputHelper) {
             if (inputHelper.AnyKeyPressed) {
                 GameEnvironment.GameStateManager.SwitchTo("Playing");
+                GameEnvironment.GameStateManager.Reset();
             }
         }
 

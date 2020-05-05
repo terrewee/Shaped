@@ -61,7 +61,7 @@ namespace Shaped.GameStates {
                 }
 
                 // cost
-                //life -= turretCost;
+                life -= turretCost;
                 turretCost = (int)(turretCost * 1.5f);
                 CostText.Text = "Cost: " + turretCost.ToString();
             }
@@ -172,7 +172,7 @@ namespace Shaped.GameStates {
             lifeText = new TextGameObject("fonts/Arial40");
             lifeText.Text = life.ToString();
             lifeText.Color = Color.Black;
-            lifeText.Position = new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 5);
+            lifeText.Position = new Vector2(GameEnvironment.Screen.X / 2 - lifeText.Text.Length * 40 / 2, GameEnvironment.Screen.Y / 5);
             objectList.Add(lifeText);
 
             CostText = new TextGameObject("fonts/Arial12");
