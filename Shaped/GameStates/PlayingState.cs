@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Shaped.GameObjects;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace Shaped.GameStates {
 
         private GameObjectList objectList = new GameObjectList();
         private GameObjectList enemies = new GameObjectList();
+        private List<Turret> turrets = new List<Turret>();
         private GameObjectList bullets = new GameObjectList();
         List<List<Point>> grid;
 
@@ -33,6 +35,11 @@ namespace Shaped.GameStates {
 
         public void HandleInput(InputHelper inputHelper) {
             player.HandleInput(inputHelper);
+            if (inputHelper.KeyPressed(Keys.Space)) {
+                Turret turret = new Turret(4);
+                turret.Position = player.Position;
+                turrets.Add(turret);
+            }
         }
 
         public void Update(GameTime gameTime) {
@@ -54,21 +61,37 @@ namespace Shaped.GameStates {
             }
             enemies.Update(gameTime);
 
+            //turrets
+            for (int i = turrets.Count - 1; i >= 0; i--) {
+                turrets[i].Update(gameTime, bullets, enemies);
+            }
+
+
             //bullets
-            foreach (Bullet bullet in bullets.Children) {
-                foreach (Enemy enemy in enemies.Children) {
-                    if (Math.Abs(bullet.Position.X - enemy.Position.X) < 50) {
-                        bullets.Remove(bullet);
-                        enemies.Remove(enemy);
+            for (int i = bullets.Children.Count - 1; i >= 0; i--) {
+                for (int j = enemies.Children.Count - 1; j >= 0; j--) {
+                    if (Math.Abs((enemies.Children[j].Position.Y + 19) - (bullets.Children[i].Position.Y + 5)) < 20) {
+                        if (Math.Abs(enemies.Children[j].Position.X - bullets.Children[i].Position.X) < 10) {
+                            Console.WriteLine("hit");
+                            bullets.Remove(bullets.Children[i]);
+                            enemies.Remove(enemies.Children[j]);
+                            break;
+                        }
                     }
                 }
             }
+            bullets.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch) {
             objectList.Draw(gameTime, spriteBatch);
+            foreach (Turret turret in turrets) {
+                turret.Draw(gameTime, spriteBatch);
+            }
             enemies.Draw(gameTime, spriteBatch);
+            bullets.Draw(gameTime, spriteBatch);
             player.Draw(gameTime, spriteBatch);
+
         }
 
         public void Reset() {

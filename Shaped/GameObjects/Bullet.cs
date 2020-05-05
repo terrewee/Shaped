@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Shaped.GameObjects {
     class Bullet : SpriteGameObject {
 
-        private int speed;
+        private int speed = 2;
 
         public Bullet(int layer = 0, string id = "", int sheetIndex = 0) : base("playing/spr_bullet", layer, id, sheetIndex) {
 

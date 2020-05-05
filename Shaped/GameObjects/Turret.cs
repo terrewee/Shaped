@@ -14,18 +14,19 @@ namespace Shaped.GameObjects {
 
         public void Update(GameTime gameTime, GameObjectList bullets, GameObjectList enemies) {
             base.Update(gameTime);
+            idle = true;
             foreach (Enemy enemy in enemies.Children) {
-                if (Math.Abs(enemy.Position.Y - this.position.Y) < 50)
+                if (Math.Abs((enemy.Position.Y + 19) - (this.Position.Y + 5)) < 30)
                     idle = false;
             }
             if (!idle) {
                 if (timer == 60) {
                     timer = 0;
                     Bullet bullet = new Bullet();
-                    bullet.Position = new Vector2(Position.X + sprite.Width, position.Y);
+                    bullet.Position = new Vector2(Position.X + sprite.Width, position.Y - 5 + sprite.Height / 2);
                     bullets.Add(bullet);
                 }
-
+                timer++;
             }
         }
 
